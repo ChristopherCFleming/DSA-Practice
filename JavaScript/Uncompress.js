@@ -18,3 +18,33 @@
 // uncompress("127y"); // ->'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'
 
 
+// O(N*M) solution:
+
+const uncompress = (s) => {
+  let uncompressedWord = "";
+  const numbers = "0123456789";
+  let beginningOfNumber = 0;
+  let endOfNumber = 0;
+  
+  while (endOfNumber < s.length) {
+    if (numbers.includes(s[endOfNumber])) {
+      endOfNumber++
+    } else {
+      let numberAsString = s.slice(beginningOfNumber, endOfNumber);
+      let timesToRepeat = Number(numberAsString);
+
+      for (let i = 0; i < timesToRepeat; i++) {
+        uncompressedWord += s[endOfNumber];
+      }
+      
+      endOfNumber++
+      beginningOfNumber = endOfNumber;
+    }
+  }
+  
+  return uncompressedWord
+};
+
+module.exports = {
+  uncompress,
+};
