@@ -21,3 +21,19 @@
 # test_04:
 # uncompress("127y")
 # // -> 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'
+
+def uncompress(s):
+    answer = ""
+    numbers = "0123456789"
+    beginningOfNumber = 0
+    endOfNumber = 0
+    while endOfNumber < len(s):
+        if s[endOfNumber] in numbers:
+            endOfNumber += 1
+        else:
+            fullNumber = int(s[beginningOfNumber:endOfNumber])
+            answer += s[endOfNumber] * fullNumber
+            endOfNumber += 1
+            beginningOfNumber = endOfNumber
+
+    return answer
