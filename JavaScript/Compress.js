@@ -19,3 +19,32 @@
 // test_04:
 // compress('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'); 
 // // -> '127y'
+
+const compress = (s) => {
+  let answer = [];
+  let count = 0;
+  let currentChar = s[1];
+  
+  for (let i = 0; i <= s.length; i++) {
+    if (currentChar == s[i]) {
+      count += 1;
+    } else if (i == s.length) {
+      if (count == 1) {
+        answer.push(s[i - 1]);
+      } else {
+        answer.push(count.toString());
+        answer.push(s[i - 1]);
+      }
+    } else {
+      if (count == 1) {
+        answer.push(s[i -1]);
+      } else{
+        answer.push(count.toString());
+        answer.push(s[i - 1]);
+      }
+      currentChar = s[i];
+      count = 1;
+      }
+  }
+    return answer.join("");
+};
