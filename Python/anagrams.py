@@ -23,3 +23,12 @@
 # anagrams('po', 'popp')  # -> false
 # test_10:
 # anagrams('pp', 'oo')  # -> false
+
+from collections import Counter
+
+
+def anagrams(s1, s2):
+    one = Counter(s1)
+    two = Counter(s2)
+
+    return one == two
