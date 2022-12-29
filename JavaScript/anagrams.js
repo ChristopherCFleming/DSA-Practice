@@ -24,3 +24,28 @@
 // test_10:
 // anagrams('pp', 'oo') // -> false
 
+const anagrams = (s1, s2) => {
+  const count = {};
+  
+  for (let char of s1) {
+    if (!(count[char])) {
+      count[char] = 0;
+    }
+    
+    count[char] += 1
+  }
+  
+  for (let char of s2) {
+    if (!(count[char])) {
+      return false;
+    }
+    count[char] -= 1;
+  }
+  
+  for (let key in count) {
+    if (count[key] !== 0) {
+      return false
+    }
+  }
+  return true
+};
