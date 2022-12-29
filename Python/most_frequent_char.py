@@ -17,3 +17,19 @@
 # most_frequent_char('eleventennine')  # -> 'e'
 # test_06:
 # most_frequent_char('riverbed')  # -> 'r'
+
+def most_frequent_char(s):
+    prevChars = {}
+    for char in s:
+        if char not in prevChars:
+            prevChars[char] = 0
+        prevChars[char] += 1
+
+    highest_value = 0
+    highest_char = ""
+    for char in s:
+        if prevChars[char] > highest_value:
+            highest_value = prevChars[char]
+            highest_char = char
+
+    return highest_char
