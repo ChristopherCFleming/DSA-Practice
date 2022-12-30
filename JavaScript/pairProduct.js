@@ -23,3 +23,16 @@
 // test_05:
 // pair_product([4, 6, 8, 2], 16) # -> (2, 3)
 
+const pairProduct = (numbers, targetProduct) => {
+  const previouslySeen = {};
+  
+  for (let i = 0; i < numbers.length; i++) {
+    const neededNum = targetProduct / numbers[i];
+    
+    if (previouslySeen[neededNum]) {
+      return [previouslySeen[neededNum], i];
+    } else {
+      previouslySeen[numbers[i]] = i;
+    }
+  }
+};
