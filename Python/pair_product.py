@@ -17,3 +17,14 @@
 # pair_product([3, 2, 5, 4, 1], 10)  # -> (1, 2)
 # test_05:
 # pair_product([4, 6, 8, 2], 16)  # -> (2, 3)
+
+def pair_product(numbers, target_product):
+    previously_seen = {}
+
+    for idx, num in enumerate(numbers):
+        needed_num = target_product / num
+
+        if needed_num in previously_seen:
+            return (previously_seen[needed_num], idx)
+        else:
+            previously_seen[num] = idx
