@@ -24,3 +24,13 @@
 #   b.push(i);
 # }
 # intersection(a, b) // -> [0,1,2,3,..., 49999]
+
+def intersection(a, b):
+    answer = []
+    efficient_set = set(a)
+
+    for num in b:
+        if num in efficient_set:
+            answer.append(num)
+
+    return answer
