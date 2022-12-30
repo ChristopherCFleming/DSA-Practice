@@ -24,3 +24,19 @@
 //   b.push(i);
 // }
 // intersection(a, b) // -> [0,1,2,3,..., 49999]
+
+const intersection = (a, b) => {
+  const inBoth = [];
+  const firstSet = new Set();
+  
+  for (let num of a) {
+    firstSet.add(num);
+  }
+  
+  for (let num of b) {
+    if (firstSet.has(num)) {
+      inBoth.push(num);
+    }
+  }
+  return inBoth;
+};
